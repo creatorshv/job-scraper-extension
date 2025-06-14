@@ -1,38 +1,48 @@
+import apiClient from "./apiClient.js";
+
 document.getElementById("extractBtn").addEventListener("click", async () => {
+  // Get linkedIn tab
   const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
 
+  // Tab validation
   if (!tab || !tab.url.includes("linkedin.com/jobs")) {
     document.getElementById("result").innerText =
       "Please open a LinkedIn job page before extracting.";
     return;
   }
 
-  // Inject script into the current tab to extract job details
+  // Script
   chrome.scripting.executeScript(
-    // details: An object describing the script to inject.
     {
       target: { tabId: tab.id },
       func: () => {
         const container = document.querySelector(
           ".jobs-semantic-search-job-details-wrapper"
         );
-        if (!container) {
-          return "Job details container not found on this page.";
-        }
-        return (
-          container.innerText.trim() || "No visible job details text found."
-        );
+        return container?.innerText.trim() || null;
       },
     },
-    // A promise return value
-    (injectionResults) => {
+    async (injectionResults) => {
       if (chrome.runtime.lastError) {
         document.getElementById("result").innerText =
           "Script injection failed: " + chrome.runtime.lastError.message;
         return;
       }
-      const text = injectionResults?.[0]?.result || "Failed to extract text.";
-      document.getElementById("result").innerText = text;
+
+      // Get extracted text
+      const rawText = injectionResults?.[0]?.result;
+
+      if (!rawText) {
+        document.getElementById("result").innerText =
+          "Job details not found or empty.";
+        return;
+      }
+
+      document.getElementById("result").innerText = "Sending to backend...";
+
+      // Send text to backend
+      const response = await apiClient(rawText);
+      document.getElementById("result").innerText = response;
     }
   );
 });

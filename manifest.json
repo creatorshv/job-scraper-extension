@@ -1,8 +1,9 @@
 {
   "manifest_version": 3,
-  "name": "Restart",
+  "name": "Listings",
   "version": "1.0",
   "permissions": ["tabs", "scripting", "activeTab"],
+  "host_permissions": ["*://*.linkedin.com/*"],
   "action": {
     "default_popup": "popup.html",
     "default_icon": {
@@ -11,11 +12,5 @@
       "48": "icons/restart-48.png",
       "128": "icons/restart-128.png"
     }
-  },
-  "content_scripts": [
-    {
-      "matches": ["*://*.linkedin.com/jobs/*"],
-      "js": ["content.js"]
-    }
-  ]
+  }
 }
