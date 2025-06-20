@@ -32,6 +32,11 @@ form.addEventListener("submit", async (event) => {
     accessFrom: "extension",
   });
 
+  if (!result.ok) {
+    errorMessage.textContent = result.message;
+    return;
+  }
+
   const tokenData = {
     value: result.data.token,
     createdAt: Date.now(),

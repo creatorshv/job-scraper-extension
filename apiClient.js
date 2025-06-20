@@ -38,7 +38,7 @@ async function authenticateUser(credentials) {
       headers: {
         "Content-Type": "application/json; charset=UTF-8",
       },
-      body: JSON.stringify(credentials),
+      body: JSON.stringify({ data: credentials }),
     });
 
     if (!response.ok) {
@@ -46,7 +46,7 @@ async function authenticateUser(credentials) {
     }
 
     const result = await response.json();
-    if (!result?.ok || !result.token) {
+    if (result?.status !== "success" || !result.token) {
       return { ok: false, message: "Incorrect login credentials." };
     }
 
