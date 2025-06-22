@@ -9,17 +9,34 @@
     <h2 id="title">Login</h2>
     <p id="error"></p>
     <form id="login-form">
-      <input type="email" id="email" name="email" placeholder="Email" />
+      <input
+        type="email"
+        id="email"
+        name="email"
+        placeholder="Email"
+        required
+      />
       <input
         type="password"
         id="password"
         name="password"
         placeholder="Password"
         minlength="6"
+        required
       />
       <button type="submit">Login</button>
     </form>
     <p><em>To register use the web app.</em></p>
+    <p>
+      <em
+        >Credits:
+        <a
+          href="https://www.flaticon.com/free-icons/human-resources"
+          title="human resources icons"
+          >Icon created by Vectors Tank - Flaticon</a
+        ></em
+      >
+    </p>
     <script type="module" src="auth.js"></script>
   </body>
 </html>
