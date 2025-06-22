@@ -72,7 +72,7 @@ extractBtn.addEventListener("click", async () => {
 
       try {
         const response = await parseData(rawText);
-        resultDisplay.textContent = response.message || "Done.";
+        resultDisplay.textContent = response;
       } catch (error) {
         resultDisplay.textContent = "Unexpected error occurred.";
       } finally {

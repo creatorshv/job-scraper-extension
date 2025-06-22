@@ -20,11 +20,9 @@ async function parseData(payload) {
       body: JSON.stringify({ data: payload }),
     });
 
-    if (!response.ok) {
-      return { ok: false, message: "Failed to add data. Try again later!" };
-    }
-
-    return { ok: true, message: "Data has been added." };
+    const result = await response.json();
+    if (result.status == "failed") return "Failed to add data.";
+    return "Data added successfully.";
   } catch (error) {
     console.error("API Error:", error.message);
     return { ok: false, message: "Something went wrong." };
