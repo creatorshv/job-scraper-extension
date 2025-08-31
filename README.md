@@ -2,12 +2,13 @@
 <img width="569" height="285" alt="image" src="https://github.com/user-attachments/assets/ac233e5f-97a5-4025-964b-8e3e3bd9efb4" />
 
 
-A lightweight browser extension that scrapes job posting details from **LinkedIn** and seamlessly integrates with the [`job-tracker`](https://github.com/yourusername/job-tracker) MERN application. This tool automates job data collection, eliminates manual entry, and streamlines your job hunting process.
+A lightweight browser extension that scrapes job posting details from **LinkedIn** and seamlessly integrates with the [`job-tracker`](https://github.com/creatorshv/job-tracker) MERN application. This tool automates job data collection, eliminates manual entry, and streamlines your job hunting process.
 
 ---
 
 ## Features
-<img width="568" height="458" alt="image" src="https://github.com/user-attachments/assets/54a125d1-66e0-4424-90cf-e124d32f98ca" />
+<img width="568" height="285" alt="image" src="https://github.com/user-attachments/assets/54a125d1-66e0-4424-90cf-e124d32f98ca" />
+
 <img width="573" height="281" alt="image" src="https://github.com/user-attachments/assets/a9d0c818-c565-4410-9908-b99ebf5b7d24" />
 
 * **Authentication**: Secure connection to the `job-tracker` backend with JWT authentication.
